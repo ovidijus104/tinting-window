@@ -1,0 +1,44 @@
+{#
+Parameters:
+* nbPages (int): number of pages
+* currentPage (int): current pages
+* url (string): route name & query (string): route parameter
+ex: list/page-5?q=myFilter (5 = page and query = myFilter)
+#}
+
+{% spaceless %}
+{% if pagination.total_pg > 1 %}
+
+{# Number of page around current page+1 #}
+{% set nearbyPagesLimit = 6 %}
+
+<div>
+    <ul class="pagination">
+        {% if pagination.current_pg != 1 %}
+        <li>
+            <a href="{{ pagination.first_pg }}">Pirmas</a>
+        </li>
+        {% endif %}
+        {% for i in 1..pagination.total_pg %}
+        {% if 0 == (pagination.current_pg - nearbyPagesLimit) - loop.index %} {# dot before #}
+        <li class="disabled"><a href="#">...</a></li>
+        {% elseif 0 == (pagination.current_pg + nearbyPagesLimit) - loop.index %} {# dot after #}
+        <li class="disabled"><a href="#">...</a></li>
+        {% elseif 0 < (pagination.current_pg - nearbyPagesLimit) - loop.index %} {# hide all before #}
+        {% elseif 0 > (pagination.current_pg + nearbyPagesLimit) - loop.index %} {# hide all after #}
+        {% else %}
+        <li {% if pagination.current_pg == loop.index  %} class="active"{% endif %}>
+            <a href="{{pagination.url}}{{loop.index}}{%if pagination.search_q is defined %}{{pagination.search_q}}{% endif %}">{{ loop.index }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% if pagination.current_pg != pagination.total_pg %}
+        <li>
+            <a href="{{ pagination.last_pg }}">Paskutinis</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
+{% endspaceless %}
+

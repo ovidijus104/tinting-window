@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}Pagrindinis{% endblock %}
+
+{% block body %}
+        {% if order.errors is not empty %}
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <ul>
+                    {% for error in order.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <section class="features-extended section">
+            <div class="container">
+                <div class="features-extended-inner section-inner has-top-divider">
+                    <div class="features-extended-header text-center">
+                        <div class="container-sm">
+                            <h2 class="section-title mt-0">KODĖL MES</h2>
+                            <p class="section-paragraph">Galime pateikti priežastis, kurios Jums neleis dvejoti pasirenkant mūsų paslaugas</p>
+                        </div>
+                    </div>
+                    <div class="feature-extended">
+                        <div class="feature-extended-image is-revealing">
+                            <div class="img-size400x400 img-select"></div>
+                        </div>
+                        <div class="feature-extended-body">
+                            <h3 class="mt-0">Pasirinkimas</h3>
+                            <p>Siūlomi tik žinomiausi Jungtinių Amerikos Valstijų, Vokietijos, Nyderlandų ir Indijos prekiniai ženklai. Kiekvieną produktą jums patiekiame su visame pasaulyje pripažįstamais tarptautiniais sertifikatais.</p>
+                        </div>
+                    </div>
+                    <div class="feature-extended">
+                        <div class="feature-extended-image is-revealing">
+                            <div class="img-size400x400 img-quality"></div>
+                        </div>
+                        <div class="feature-extended-body">
+                            <h3 class="mt-0">Kokybė</h3>
+                            <p>Plėvelę užklijuosime lygiai, preciziškai, be burbuliukų. Pagal plėvelės naudojimo paskirtį, visiems darbams suteikiame garantiją nuo 1 iki 10 metų. Papildomai supažindiname su plėvelės gamintojų sertifikatais ir produkto tarnavimo laiko garantijomis.</p>
+                        </div>
+                    </div>
+                    <div class="feature-extended">
+                        <div class="feature-extended-image is-revealing">
+                            <div class="img-size400x400 img-speed"></div>
+                        </div>
+                        <div class="feature-extended-body">
+                            <h3 class="mt-0">Greitis</h3>
+                            <p>Kai tik išsirenkate patinkančią plėvelę – rezervuojame darbų atlikimo laiką. Todėl visuomet žinote, kada turite atvykti. Jokios sumaišties ir laiku neįvykdytų darbų. Automobilio stiklų tamsinimas trunka apie 2-5 valandas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features section text-center">
+            <div class="container">
+                <div class="features-inner section-inner has-top-divider">
+                    <h2 class="section-title mt-0">Paslaugos</h2>
+                    <div class="features-wrap">
+                        <div class="feature is-revealing">
+                            <div class="feature-inner">
+                                <div class="feature-icon">
+                                    <i class="fas fa-car fa-5x"></i>
+                                </div>
+                                <h4 class="feature-title h3-mobile">Langų tamsinimas</h4>
+                                <p class="text-sm">Automobilių stiklų tamsinimas plėvele - tai paprastas būdas padidinti komfortą Jūsų automobilyje. Plėvelė suteikia apsaugą nuo akinimo, blukimo, karščio, sužalojimo, vagystės, plėšimo, žalingo UV poveikio akims ir odai.
+                                    Užklijavus stiklus plėvele gaunate daugiau privatumo, automobilio išvaizdos patobulinimą, Įvaizdį.
+                                    Automobilio stiklo tamsinimo darbai paprastai trunka nuo vienos iki trijų valandų, priklausomai nuo stiklų skaičiaus ir automobilio markės. Šoniniai stiklai yra išimami, kartais durelių apmušimai tik atkeliami. Klientui pageidaujant, stiklai gali būti visiškai neišimami, tačiau dėl to gali nukentėti plėvelės užklijavimo kokybė. Tuoj pat po plėvelės klijavimo drąsiai galima varstyti langus, o drėgmės, atsiradusios klijuojant plėvelę, likučiai pasišalina savaime per gamintojo nustatytą laikotarpį.</p>
+                            </div>
+                        </div>
+                        <div class="feature is-revealing">
+                            <div class="feature-inner">
+                                <div class="feature-icon">
+                                    <i class="fas fa-car-crash fa-5x"></i>
+                                </div>
+                                <h4 class="feature-title h3-mobile">Apsauginės plevelės</h4>
+                                <p class="text-sm">Tai technologija, kurios pagalba sugebėsite apsaugoti savo automobilį nuo išorinių veiksnių: įbrėžimų nuo akmenukų, neatsargių aplinkinių vairuotojų, kurie kliudo Jūsų automobilį, UV spindulių poveikio dažų blukimo ir tt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features section text-center">
+            <div class="container">
+                <div class="features-inner section-inner has-top-divider">
+                    <div class="features-extended-header text-center">
+                        <div class="container-sm">
+                            <h2 class="section-title mt-0">Rezervuoti apsilankymą</h2>
+                        </div>
+                    </div>
+
+                    <div class="features-wrap">
+                        <form class="flex-container" method="post" action="/reservation/create">
+                            <div class="flex left">
+                                <input type="text" name="name" placeholder="Vardas*"><br>
+                                <input type="text" name="surname" placeholder="Pavardė*"><br>
+                                <input type="email" name="email" placeholder="El. paštas*"><br>
+                                <input type="text" name="phone" placeholder="Telefonas*"><br>
+                                <input type="text" name="car" placeholder="Automobilio modelis*">
+                            </div>
+                            <div class="flex right">
+                                <textarea placeholder="Kokių paslaugų norėtume..." rows="7" name="arrival_reason"></textarea><br>
+                                <label for="date">Atvykimo data</label>
+                                <input type="date" name="arrival_date"><br>
+                                <button class="button button-primary" type="submit" value="Rezervuoti">Rezervuoti</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+{% endblock %}
+

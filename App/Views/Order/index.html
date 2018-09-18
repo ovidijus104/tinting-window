@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Užsakymai{% endblock %}
+
+{% block body %}
+<section class="features section text-center">
+    <div class="container" style="max-width: 1380px !important;">
+        <form class="flex-container" method="get" action="/reservation">
+            <div class="flex" style="width: 80%">
+                <input type='text' name='search' value="{{ searchQ|default('') }}" maxlength='25' placeholder="Ko ieškosime?">
+            </div>
+            <div class="flex right" style="flex-direction: row !important;">
+                <button class="button button-primary" type="submit" value="Rezervuoti" >Ieškoti</button>
+                <a href="/reservation" style="background-color: red;color: white;padding: 0.4em 1.5em;text-decoration: none;text-transform: uppercase; margin-left: 10px;">X</a>
+            </div>
+        </form>
+        <table>
+            <thead>
+            <tr>
+                <th>Vardas, pavardė</th>
+                <th>El. paštas</th>
+                <th>Telefonas</th>
+                <th>Priežastis</th>
+                <th>Atvyksta</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in ordersData %}
+                <tr>
+                    <td>{{ order.cliant_name }}, {{ order.cliant_surname }}</td>
+                    <td>{{ order.cliant_email }}</td>
+                    <td>{{ order.cliant_phone }}</td>
+                    <td>{{ order.arrival_reason }}</td>
+                    <td>{{ order.arrival_date }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5"><em>Nera duomenų</em></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% include 'pagination.html' with pagination %}
+    </div>
+</section>
+
+{% endblock %}

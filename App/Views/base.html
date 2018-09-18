@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i|PT+Serif:700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="is-boxed">
+<div class="body-wrap boxed-container">
+    <header class="header-container">
+        <div class="site-header-inner">
+            <div class="brand header-brand">
+            <!--NO LOGO-->
+            </div>
+            <ul class="header-links list-reset m-0">
+                <li>
+                    <a href="/">Pagrindinis</a>
+                </li>
+                <li>
+                    <a class="button button-sm button-shadow" href="/reservation">Užsakymai</a>
+                </li>
+            </ul>
+        </div>
+        <div class="text-center">
+            <div class="container-sm">
+                <h2 class="section-title">AUTOMOBILIO STIKLŲ TAMSINIMAS</h2>
+                <p class="section-paragraph">Greitai ir nebrangiai pagerinkite automobilio estetinę išvaizdą</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% block body %}
+        {% endblock %}
+    </main>
+
+    {% include 'footer.html' %}
+</div>
+</body>
+</html>
